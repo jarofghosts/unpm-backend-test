@@ -1,6 +1,7 @@
 var EE = require('events').EventEmitter
 
-var test = require('tape')
+var parse = require('tap-parser')
+  , test = require('tape')
 
 module.exports = test_backend
 
@@ -11,7 +12,7 @@ function test_backend(backend, _done, _out) {
     , done = _done || noop
 
   test_stream.pipe(out)
-  test_stream.on('end', done)
+  test_stream.pipe(parse(test_done))
 
   test('backend is an Event Emitter', function(t) {
     t.plan(1)
@@ -214,6 +215,10 @@ function test_backend(backend, _done, _out) {
       t.ok(!err, 'no error to callback')
     }
   })
+
+  function test_done(tap) {
+    done(tap)
+  }
 }
 
 function noop() {}

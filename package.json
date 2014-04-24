@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/jarofghosts/unpm-backend-test",
   "dependencies": {
-    "tape": "2.12.3"
+    "tape": "2.12.3",
+    "tap-parser": "^0.5.0"
   }
 }
