@@ -1,0 +1,24 @@
+{
+  "name": "unpm-backend-test",
+  "version": "0.0.0",
+  "description": "unpm backend tests for verifying compliance",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'all good!'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jarofghosts/unpm-backend-test.git"
+  },
+  "keywords": [
+    "unpm",
+    "backend",
+    "test"
+  ],
+  "author": "jesse keane <me@jessekeane.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jarofghosts/unpm-backend-test/issues"
+  },
+  "homepage": "https://github.com/jarofghosts/unpm-backend-test"
+}
