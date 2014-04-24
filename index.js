@@ -192,12 +192,10 @@ function test_backend(backend, _done, _out) {
     var get_tarball = backend.getTarball('dummy', '1.2.3')
       , data = ''
 
-    t.plan(5)
+    t.plan(3)
 
     t.ok(get_tarball.pipe, 'return is stream-like')
-    t.ok(get_tarball.read, 'return is readable-stream-like')
     t.equal(typeof get_tarball.pipe, 'function', 'return has pipe')
-    t.equal(typeof get_tarball.read, 'function', 'return has read')
 
     get_tarball.on('data', function(chunk) {
       data += chunk
