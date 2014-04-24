@@ -1,7 +1,6 @@
 var EE = require('events').EventEmitter
 
-var test = require('tape').createHarness()
-  , parse = require('tap-parser')
+var test = require('tape')
 
 module.exports = test_backend
 
@@ -11,10 +10,8 @@ function test_backend(backend, _done, _out) {
   var out = _out || process.stdout
     , done = _done || noop
 
-  var parse_stream = parse(test_done)
-
   test_stream.pipe(out)
-  test_stream.pipe(parse_stream)
+  test_stream.on('end', done)
 
   test('backend is an Event Emitter', function(t) {
     t.plan(1)
@@ -218,8 +215,8 @@ function test_backend(backend, _done, _out) {
     }
   })
 
-  function test_done(results) {
-    done(results)
+  function test_done() {
+    done()
   }
 }
 

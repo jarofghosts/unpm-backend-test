@@ -9,15 +9,11 @@ check your backend for compliance with unpm
 var test = require('unpm-backend-test')
 
 test(backend, callback, output_stream)
-
-function callback(results) {
-  console.dir(results)
-}
 ```
 
 ## notes
 
-* `results` in your callback are [tap-parser](http://npm.im/tap-parser) results
+* `callback` will be called when the test finishes
 * uses [tape](http://npm.im/tape) for testing
 
 ## license
