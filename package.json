@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/jarofghosts/unpm-backend-test/issues"
   },
-  "homepage": "https://github.com/jarofghosts/unpm-backend-test"
+  "homepage": "https://github.com/jarofghosts/unpm-backend-test",
+  "dependencies": {
+    "tape": "2.12.3"
+  }
 }
