@@ -2,11 +2,11 @@ var EE = require('events').EventEmitter
 
 var test = require('tape')
 
-var test_stream = test.createStream()
-
 module.exports = test_backend
 
 function test_backend(backend, _done, _out) {
+  var test_stream = test.createStream()
+
   var out = _out || process.stdout
     , done = _done || noop
 
