@@ -58,12 +58,13 @@ function test_backend(backend, _done, _out) {
       var expected_old = {test: 'data'}
         , expected_new = {data: 'test'}
 
-      t.plan(5)
+      t.plan(6)
 
       backend.once('set' + title, check_emit)
       backend['set' + title]('dummy', expected_new, check_callback)
 
-      function check_emit(new_data, old_data) {
+      function check_emit(key, new_data, old_data) {
+        t.strictEqual(key, 'dummy')
         t.deepEqual(new_data, expected_new)
         t.deepEqual(old_data, expected_old)
       }
@@ -84,12 +85,13 @@ function test_backend(backend, _done, _out) {
       var expected_new = {data: 'test'}
         , expected_old = null
 
-      t.plan(5)
+      t.plan(6)
 
       backend.once('set' + title, check_emit)
       backend['set' + title]('dummy2', expected_new, check_callback)
 
-      function check_emit(new_data, old_data) {
+      function check_emit(key, new_data, old_data) {
+        t.strictEqual(key, 'dummy2')
         t.deepEqual(new_data, expected_new)
         t.strictEqual(old_data, expected_old)
       }
@@ -150,7 +152,7 @@ function test_backend(backend, _done, _out) {
     })
 
     test('remove' + title + ' emits event with old data', function(t) {
-      t.plan(1)
+      t.plan(2)
 
       var expected = {data: 'test'}
 
@@ -158,8 +160,9 @@ function test_backend(backend, _done, _out) {
 
       backend['remove' + title]('dummy2')
 
-      function check_emit(data) {
-        t.deepEqual(data, expected, 'passes old data to callback')
+      function check_emit(key, data) {
+        t.strictEqual(key, 'dummy2')
+        t.deepEqual(data, expected, 'emits old data')
       }
     })
   }
